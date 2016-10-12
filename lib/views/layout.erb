@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QI TEST</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/blueimp/css/blueimp-gallery.min.css">
+
+
+</head>
+<body>
+<div class="container">
+
+  <div>
+    <% if @error then %>
+        <div class="alert alert-error"><%= @error %></div>
+    <% end %>
+
+    <% if session['access_token'] %>
+        <%= yield %>
+    <% else %>
+        <a href="/login">Login</a>
+    <% end %>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/blueimp/js/blueimp-gallery.min.js"></script>
+
+<script>
+    document.getElementById('links').onclick = function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement,
+                link = target.src ? target.parentNode : target,
+                options = {index: link, event: event},
+                links = this.getElementsByTagName('a');
+        blueimp.Gallery(links, options);
+    };
+</script>
+</body>
+</html>

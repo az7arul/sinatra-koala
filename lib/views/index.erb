@@ -1,0 +1,80 @@
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#pictures">Pictures</a></li>
+  <li><a data-toggle="tab" href="#status">Status</a></li>
+  <li><a data-toggle="tab" href="#shares">Shares</a></li>
+  <li><a data-toggle="tab" href="#media">Media</a></li>
+  <li><a data-toggle="tab" href="#etc">Etc</a></li>
+  <li><a href="/logout">Logout</a></li>
+
+</ul>
+
+<div class="tab-content">
+  <div id="pictures" class="tab-pane fade in active">
+    <h3>Picture</h3>
+
+    <div id="links">
+      <% @images.each do |image| %>
+          <a href=<%= image['picture'] %>> <img src="<%= image['picture'] %>"> </a>
+      <% end %>
+    </div>
+
+
+  </div>
+
+  <div id="status" class="tab-pane fade">
+
+    <ul>
+      <% @statuses.each do |status| %>
+          <li>
+
+            <% if status['message'] %>
+                Message: <%= status['message'] %>
+            <% end %>
+            <% if status['link'] %>
+                Link: <a href=<%= status['link'] %>><%= status['link'] %></a>
+            <% end %>
+          </li>
+      <% end %>
+    </ul>
+
+  </div>
+  <div id="shares" class="tab-pane fade">
+    <h3>Shares</h3>
+    <ul>
+      <% @shared_links.each do |link| %>
+          <% if link['link'] %>
+              <li>
+                <a href=<%= link['link'] %>><%= link['link'] %></a>
+              </li>
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div id="media" class="tab-pane fade">
+    <ul>
+      <% @videos.each do |video| %>
+          <% if video['source'] %>
+              <li>
+                <video width="320" height="240">
+                  <source src="<%= video['source'] %>" type="video/mp4">
+                </video>
+              </li>
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="etc" class="tab-pane fade">
+    <h3>Etc</h3>
+  </div>
+</div>
+
+<div id="blueimp-gallery" class="blueimp-gallery">
+  <div class="slides"></div>
+  <h3 class="title"></h3>
+  <a class="prev">‹</a>
+  <a class="next">›</a>
+  <a class="close">×</a>
+  <a class="play-pause"></a>
+  <ol class="indicator"></ol>
+</div>
