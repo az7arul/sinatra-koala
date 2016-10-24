@@ -16,11 +16,7 @@
         <div class="alert alert-error"><%= @error %></div>
     <% end %>
 
-    <% if session['access_token'] %>
-        <%= yield %>
-    <% else %>
-        <a href="/login">Login</a>
-    <% end %>
+    <%= yield %>
   </div>
 </div>
 

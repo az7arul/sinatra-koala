@@ -42,13 +42,10 @@ class QITest < Sinatra::Application
                                               fields: ['source'
                                               ]})
       
-      
-      
-      
+      erb :index
+    else
+      erb :login
     end
-    
-    erb :index
-    
   end
 
   get '/login' do
